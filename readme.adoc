@@ -1,0 +1,34 @@
+= Kotlin DSL for Jackson
+
+Provides a Kotlin overlay over FasterXML Jackson adding json constructing
+methods using Kotlin lambdas.
+
+Additionally, corrects and adds functionality over the Jackson API, such as
+adding support for unsigned types or correcting the fact that a generic type is
+required for any untyped call to ``ObjectNode``'s `set` method.
+
+.Source
+[source, kotlin]
+----
+objectNode {
+  put("foo", "value")
+  addObject("bar") {
+    addArray("fizz") {
+      add(1)
+      add(2)
+      add(3)
+    }
+  }
+}
+----
+
+.Output
+[source, json]
+----
+{
+  "foo": "value",
+  "bar": {
+    "fizz": [1, 2, 3]
+  }
+}
+----
