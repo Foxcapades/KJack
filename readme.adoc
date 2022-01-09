@@ -1,5 +1,8 @@
 = Kotlin DSL for Jackson
 
+// TODO add link to this badge when it hits the search page on maven central
+image:https://img.shields.io/maven-central/v/io.foxcapades.lib/kjack[Maven Central]
+
 Provides a Kotlin overlay over FasterXML Jackson adding json constructing
 methods using Kotlin lambdas.
 
