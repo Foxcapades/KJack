@@ -70,7 +70,7 @@ publishing {
       pom {
         name.set("Kotlin DSL for Jackson")
         description.set("Adds Kotlin mixins and methods over the Jackson JSON API.")
-        url.set("https://github.com/Foxcapades/lib-json-serial")
+        url.set("https://github.com/Foxcapades/kjack")
         developers {
           developer {
             id.set("epharper")
@@ -86,9 +86,9 @@ publishing {
           }
         }
         scm {
-          connection.set("scm:git:git://github.com/Foxcapades/lib-json-serial.git")
-          developerConnection.set("scm:git:ssh://github.com/Foxcapades/lib-json-serial.git")
-          url.set("https://github.com/Foxcapades/lib-json-serial")
+          connection.set("scm:git:git://github.com/Foxcapades/kjack.git")
+          developerConnection.set("scm:git:ssh://github.com/Foxcapades/kjack.git")
+          url.set("https://github.com/Foxcapades/kjack")
         }
       }
     }
