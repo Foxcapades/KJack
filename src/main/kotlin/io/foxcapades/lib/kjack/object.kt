@@ -281,7 +281,8 @@ inline fun ObjectNode.putIf(
 }
 
 inline fun ObjectNode.putNullIf(condition: Boolean, key: String) {
-  putNull(key)
+  if (condition)
+    putNull(key)
 }
 
 // endregion
