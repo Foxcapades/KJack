@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.foxcapades.lib"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
   mavenCentral()
@@ -68,8 +68,8 @@ publishing {
       from(components["java"])
 
       pom {
-        name.set("Json Serial")
-        description.set("Interfaces for json (de)serializable types in Kotlin")
+        name.set("Kotlin DSL for Jackson")
+        description.set("Adds Kotlin mixins and methods over the Jackson JSON API.")
         url.set("https://github.com/Foxcapades/lib-json-serial")
         developers {
           developer {
