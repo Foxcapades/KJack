@@ -314,6 +314,10 @@ inline fun ArrayNode.add(value: Any) {
   }
 }
 
+inline fun <T> ArrayNode.add(values: Collection<T>) {
+  values.forEach { add(it as Any) }
+}
+
 // endregion
 
 // region Set Mixins
