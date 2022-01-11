@@ -37,7 +37,7 @@ inline fun ArrayNode.setObject(index: Int, action: ObjectNode.() -> Unit) {
  * @param action Action that configures the newly created [ArrayNode].
  */
 inline fun ArrayNode.addArray(size: Int = 1, action: ArrayNode.() -> Unit) {
-  addRawValue(RawValue(KJack.arrayNode(size, action)))
+  add(KJack.arrayNode(size, action))
 }
 
 /**
@@ -48,8 +48,12 @@ inline fun ArrayNode.addArray(size: Int = 1, action: ArrayNode.() -> Unit) {
  * @param size   Size to presize the newly created array to.
  * @param action Action that configures the newly created [ArrayNode].
  */
-inline fun ArrayNode.setArray(index: Int, size: Int = 1, action: ArrayNode.() -> Unit) {
-  setRawValue(index, RawValue(KJack.arrayNode(size, action)))
+inline fun ArrayNode.setArray(
+  index: Int,
+  size: Int = 1,
+  action: ArrayNode.() -> Unit,
+) {
+  set(index, KJack.arrayNode(size, action))
 }
 
 // region Add If Not Null
@@ -210,6 +214,8 @@ inline fun ArrayNode.setIfNN(index: Int, value: JsonNode?) {
 
 // endregion
 
+// region Add All
+
 inline fun ArrayNode.addAll(vararg values: Byte) {
   values.forEach { add(it.toInt()) }
 }
@@ -265,3 +271,89 @@ inline fun ArrayNode.addAll(vararg values: Boolean) {
 inline fun ArrayNode.addAll(vararg values: String) {
   values.forEach { add(it) }
 }
+
+// endregion
+
+// region Add Mixins
+
+inline fun ArrayNode.add(value: Byte) {
+  add(value.toInt())
+}
+
+inline fun ArrayNode.add(value: UByte) {
+  add(value.toInt())
+}
+
+inline fun ArrayNode.add(value: UShort) {
+  add(value.toInt())
+}
+
+inline fun ArrayNode.add(value: UInt) {
+  add(value.toLong())
+}
+
+inline fun ArrayNode.add(value: ULong) {
+  add(BigInteger(value.toString()))
+}
+
+inline fun ArrayNode.add(value: Any) {
+  when (value) {
+    is String     -> add(value)
+    is Int        -> add(value)
+    is Boolean    -> add(value)
+    is Double     -> add(value)
+    is Long       -> add(value)
+    is JsonNode   -> add(value)
+    is BigInteger -> add(value)
+    is BigDecimal -> add(value)
+    is Byte       -> add(value)
+    is Short      -> add(value)
+    is Float      -> add(value)
+    is Unit       -> addNull()
+    else          -> addPOJO(value)
+  }
+}
+
+// endregion
+
+// region Set Mixins
+
+inline fun ArrayNode.set(index: Int, value: Byte) {
+  set(index, value.toInt())
+}
+
+inline fun ArrayNode.set(index: Int, value: UByte) {
+  set(index, value.toInt())
+}
+
+inline fun ArrayNode.set(index: Int, value: UShort) {
+  set(index, value.toInt())
+}
+
+inline fun ArrayNode.set(index: Int, value: UInt) {
+  set(index, value.toLong())
+}
+
+inline fun ArrayNode.set(index: Int, value: ULong) {
+  set(index, BigInteger(value.toString()))
+}
+
+inline fun ArrayNode.set(index: Int, value: Any) {
+  when (value) {
+    is String     -> set(index, value)
+    is Int        -> set(index, value)
+    is Boolean    -> set(index, value)
+    is Double     -> set(index, value)
+    is Long       -> set(index, value)
+    is JsonNode   -> set(index, value)
+    is BigInteger -> set(index, value)
+    is BigDecimal -> set(index, value)
+    is Byte       -> set(index, value)
+    is Short      -> set(index, value)
+    is Float      -> set(index, value)
+    is Unit       -> setNull(index)
+    else          -> setPOJO(index, value)
+  }
+}
+
+// endregion
