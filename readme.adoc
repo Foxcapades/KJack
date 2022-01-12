@@ -1,7 +1,7 @@
 = Kotlin DSL for Jackson
 
 image:https://img.shields.io/badge/jvm-1.8-red[]
-image:https://img.shields.io/badge/kotlin-1.6.10-green[]`
+image:https://img.shields.io/badge/kotlin-1.6.10-green[]
 image:https://img.shields.io/maven-central/v/io.foxcapades.lib/kjack[Maven Central, link="https://search.maven.org/artifact/io.foxcapades.lib/kjack"]
 
 Provides a Kotlin overlay over FasterXML Jackson adding json constructing
